@@ -1,1 +1,26 @@
-quay.io/jpacker/nodejs-pacman-app
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: pacman
+  name: pacman
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pacman
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pacman
+    spec:
+      containers:
+      - image: quay.io/jpacker/nodejs-pacman-app
+        name: pacman
+        env:
+        - name: COLOR
+          value: "blue"
+        resources: {}
