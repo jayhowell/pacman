@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pacman
+  namespace: pacman
+  labels:
+    app: pacman
+    app.kubernetes.io/component: pacman
+    app.kubernetes.io/instance: pacman
+    app.kubernetes.io/name: pacman
+    app.kubernetes.io/part-of: pacman
+    app.openshift.io/runtime-version: latest
+spec:
+  clusterIP: 172.30.73.158
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  ipFamilyPolicy: SingleStack
+  sessionAffinity: None
+  selector:
+    app: pacman
+    deployment: pacman
+status:
+  loadBalancer: {}
