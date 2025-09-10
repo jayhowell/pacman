@@ -25,5 +25,5 @@ spec:
   sessionAffinity: None
   selector:
     app: pacman
-    deployment: pacman
+
 
